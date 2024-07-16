@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-
+import useAuth from "../../hooks/useAuth";
+import { CgProfile } from "react-icons/cg";
 
 const Nav = () => {
     const darkMode = true;
+    const {logOut, user} = useAuth()
     const listItems = (
         <div className=" lg:flex  items-center gap-7">
           <div className="flex  md:flex-row md:gap-6 flex-col lg:flex-row lg:gap-7 lg:space-y-0 space-y-4 ">
@@ -56,7 +58,7 @@ const Nav = () => {
             </Link>
             <Link to="/">
               <h1 className="text-2xl font-bold lg:block hidden inline-block  text-transparent bg-clip-text bg-gradient-to-r from-indigo-900 from-10% via-sky-500 via-30% to-emerald-500 to-90% ...">
-                BrainStrom
+                Money Sender
               </h1>
             </Link>
           </div>
@@ -68,21 +70,13 @@ const Nav = () => {
         <div className="navbar-end space-x-3">
           <div className="dropdown dropdown-hover drop-shadow-none">
             <div tabIndex={0} role="button" className=" m-1">
-              {/* <Link>
+              <Link>
                 {user ? (
-                  <img
-                    className="h-14 rounded-full"
-                    src={
-                      user?.photoURL
-                        ? user.photoURL
-                        : "https://i.ibb.co/fQZMVfT/profile-removebg-preview.png"
-                    }
-                    alt=""
-                  />
+                  <h2 className="text-3xl"><CgProfile /></h2>
                 ) : (
                   ""
                 )}
-              </Link> */}
+              </Link>
             </div>
             <ul
               tabIndex={0}
@@ -96,9 +90,9 @@ const Nav = () => {
               </li>
               <li>
                 <a>
-                  {/* <button onClick={() => logOut()} className=" w-full ">
+                  <button onClick={() => logOut()} className=" w-full ">
                     Logout
-                  </button> */}
+                  </button>
                 </a>
               </li>
             </ul>

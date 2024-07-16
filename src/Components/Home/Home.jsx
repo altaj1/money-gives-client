@@ -1,9 +1,10 @@
+import Bannre from "./Banner/Bannre";
 
 
 const Home = () => {
     return (
-        <div>
-            this is home
+        <div className="">
+           <Bannre></Bannre>
         </div>
     );
 };
