@@ -13,7 +13,7 @@ const RegistrationForm = () => {
   const axiosCommon = useAxiosCommon()
   
   const firebasePin = pin + 9
-  
+  console.log(user)
   const registerUser = async user => {
    
     const { data } = await axiosCommon.put(
