@@ -1,23 +1,15 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { CgProfile } from "react-icons/cg";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 
 const Nav = () => {
-    const darkMode = true;
-    const {logOut, user} = useAuth()
+
+    const {logOut, user, setDarkMode, darkMode} = useAuth()
     const listItems = (
         <div className=" lg:flex  items-center gap-7">
           <div className="flex  md:flex-row md:gap-6 flex-col lg:flex-row lg:gap-7 lg:space-y-0 space-y-4 ">
-            {/* <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-indigo-900  font-bold lg:mt-0 mt-4"
-                  : "font-bold mt-4 lg:mt-0"
-              }
-            >
-              Home
-            </NavLink> */}
+          
           </div>
         </div>
       );
@@ -112,12 +104,12 @@ const Nav = () => {
   
           {/* dark mood button */}
           <div className=" m-0 ">
-            {/* <button
+            <button
               onClick={() => setDarkMode(!darkMode)}
               className=" p-1 mr-3 flex items-center text-4xl"
             >
               {darkMode ? <MdOutlineDarkMode /> : <MdDarkMode />}
-            </button> */}
+            </button>
           </div>
         </div>
       </div>

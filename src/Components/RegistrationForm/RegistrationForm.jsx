@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import useAuth from '../../hooks/useAuth';
+import useAxiosCommon, { axiosCommon } from '../../hooks/useAxiosCommon';
+import Swal from 'sweetalert2';
 
 const RegistrationForm = () => {
   const [name, setName] = useState('');
@@ -8,10 +10,19 @@ const RegistrationForm = () => {
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
   const {createUser, user} = useAuth();
-  console.log(user)
+  const axiosCommon = useAxiosCommon()
+  
   const firebasePin = pin + 9
-  // firebasePin.push(9)
-  console.log( firebasePin)
+  
+  const registerUser = async user => {
+   
+    const { data } = await axiosCommon.put(
+      `/register`,
+      user
+    )
+    console.log(data)
+    return data
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic (e.g., send data to backend)
@@ -21,9 +32,26 @@ const RegistrationForm = () => {
       console.log("PIN must be exactly 5 numeric digits.");
       return;
     }
-    console.log(pin)
-    console.log(name, pin, mobile, email)
-    createUser(email, firebasePin);
+    const currentUser = {
+      email: user?.email,
+      role: 'User',
+      status: 'pending',
+      mobile:mobile,
+      pin:pin
+
+    }
+    createUser(email, firebasePin)
+    .then(res=>{
+      registerUser(currentUser)
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Registration Successfull",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    
    
   };
 
