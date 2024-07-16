@@ -5,25 +5,48 @@ import { TbFidgetSpinner } from 'react-icons/tb'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 import useAuth from '../../hooks/useAuth'
+import useAxiosCommon from '../../hooks/useAxiosCommon'
 
 const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state || '/'
-  const { signInWithGoogle, signIn, loading, setLoading, resetPassword } =
+  const {  signIn, loading, setLoading, setUser,  } =
     useAuth()
   const [email, setEmail] = useState('')
-
+const axiosCommon = useAxiosCommon()
   const handleSubmit = async e => {
     e.preventDefault()
     const form = e.target
-    const email = form.email.value
-    const password = form.password.value + 9 
+    const emailOrPh = form.emailOrPh.value
+   
+    const password = form.password.value 
+    const pass = password +9
     console.log(password)
+   
     try {
       setLoading(true)
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Test the regex with an email
+const isValidEmail = emailRegex.test(emailOrPh);
+
       // 1. sign in user
-      await signIn(email, password)
+      if (isValidEmail) {
+        await signIn(email, pass)
+      }
+      else{
+        
+        const loginData = {emailOrPh, password}
+        console.log(loginData)
+        const {data} = await axiosCommon.put('/login', loginData)
+        setUser(data)
+        console.log(data)
+        if (data) {
+            setLoading(false)
+        }
+        
+      }
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -57,19 +80,31 @@ const Login = () => {
           <div className='space-y-4'>
             <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
-                Email address
+                Email address or Phone Number
               </label>
               <input
-                type='email'
-                name='email'
+                type='text'
+                name='emailOrPh'
                 onBlur={e => setEmail(e.target.value)}
                 id='email'
                 required
-                placeholder='Enter Your Email Here'
+                placeholder='Enter Your Email or Phone Number Here'
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
+            {/* <div>
+              <label htmlFor='Mobile Number' className='block mb-2 text-sm'>
+              Mobile Number
+              </label>
+              <input
+                type='number'
+               name='mobile' 
+                placeholder='Enter Mobile Number'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                data-temp-mail-org='0'
+              />
+            </div> */}
             <div>
               <div className='flex justify-between'>
                 <label htmlFor='password' className='text-sm mb-2'>

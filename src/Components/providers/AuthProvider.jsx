@@ -48,6 +48,7 @@ const AuthProvider = ({children}) => {
     await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {
       withCredentials: true,
     })
+    setUser(null)
     return signOut(auth)
   }
 
@@ -91,7 +92,8 @@ const AuthProvider = ({children}) => {
         logOut,
         updateUserProfile,
         darkMode,
-        setDarkMode
+        setDarkMode,
+        setUser
       }
     return (
         <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
