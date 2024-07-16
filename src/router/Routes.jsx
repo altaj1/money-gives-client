@@ -3,6 +3,8 @@ import Main from "../layout/Main";
 import Home from "../Components/Home/Home";
 import RegistrationForm from "../Components/RegistrationForm/RegistrationForm";
 import Login from "../Components/RegistrationForm/Login";
+import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layout/DashboardLayout";
 
 export const router = createBrowserRouter([
     {
@@ -22,5 +24,16 @@ export const router = createBrowserRouter([
             element: <Login></Login>
            },
         ]
+    },
+    {
+        path: '/dashboard',
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+        
+    ]
     }
 ])
