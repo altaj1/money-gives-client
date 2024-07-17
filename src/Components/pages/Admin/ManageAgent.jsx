@@ -23,7 +23,7 @@ const ManageAgent = () => {
       queryKey: ['users', search],
       // enabled: !!search, 
       queryFn: async () => {
-        const { data } = await axiosSecure(`/users?search=${search}`)
+        const { data } = await axiosSecure(`/users/agent?search=${search}`)
         return data
       },
       
@@ -72,13 +72,13 @@ const ManageAgent = () => {
                           scope='col'
                           className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm  font-normal'
                         >
-                          Update Role
+                         Role
                         </th>
                         <th
                           scope='col'
                           className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm  font-normal'
                         >
-                        User Permission
+                       Permission
                         </th>
                         {/* <th
                           scope='col'

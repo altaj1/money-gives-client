@@ -10,7 +10,7 @@ const RegistrationForm = () => {
   const [pin, setPin] = useState('');
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
-  const {createUser, user} = useAuth();
+  const {createUser, user, updateUserProfile} = useAuth();
   const axiosCommon = useAxiosCommon()
   
   const firebasePin = pin + 9
@@ -41,8 +41,9 @@ const RegistrationForm = () => {
       mobile:mobile,
       pin:pin,
       name:name,
-
     }
+
+   
     createUser(email, firebasePin)
     .then(res=>{
       registerUser(currentUser)
@@ -53,6 +54,7 @@ const RegistrationForm = () => {
         showConfirmButton: false,
         timer: 1500
       });
+      updateUserProfile(name)
     })
     
     
@@ -78,7 +80,7 @@ const RegistrationForm = () => {
         <div className="mb-4">
         <label htmlFor="pin" className="block text-sm font-medium text-gray-700">
             {
-              pin.length == 5? "Continue": "You mast enter 5 character"
+              pin.length == 5? "Continue": "You mast enter 5 character number pin"
             }
           </label>
           <input

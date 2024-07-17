@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AiOutlineBars } from 'react-icons/ai'
 
-import { FcHome, } from 'react-icons/fc'
+import { FcHome, FcSettings, } from 'react-icons/fc'
 import { GrLogout } from 'react-icons/gr'
 
 
@@ -84,10 +84,10 @@ const Sidebar = () => {
             {/*  Menu Items */}
             <nav>
             <MenuItem
-                label='Leader Board'
-                address='/dashboard'
-                icon={ MdOutlineLeaderboard}
-              />
+            label='Profile'
+            address='profile'
+            icon={FcSettings}
+          />
               {role === 'User' && <UserMenu/>}
 
               

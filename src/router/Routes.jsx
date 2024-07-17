@@ -9,6 +9,7 @@ import ManageUsers from "../Components/pages/Admin/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import ManageAgent from "../Components/pages/Admin/ManageAgent";
 import RegistrationAgent from "../Components/RegistrationForm/RegistrationAgent";
+import Profile from "../Components/pages/common/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,14 @@ export const router = createBrowserRouter([
             element: (
               <PrivateRoute>
                <RegistrationAgent></RegistrationAgent>
+              </PrivateRoute>
+            ),
+          },
+        {
+            path: 'profile',
+            element: (
+              <PrivateRoute>
+               <Profile></Profile>
               </PrivateRoute>
             ),
           },

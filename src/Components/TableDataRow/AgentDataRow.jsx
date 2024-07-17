@@ -54,21 +54,22 @@ const AgentDataRow = ({user, refetch}) => {
        
   
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <select onChange={(e) => setRole(e.target.value)}
+        <p className="text-gray-900 whitespace-no-wrap">{user.role}</p>
+          {/* <select onChange={(e) => setRole(e.target.value)}
           className="bg-base-200 p-1 rounded-xl"
           >
             <option>{user.role}</option>
             <option value="Admin">Admin</option>
             <option value="User">User</option>
             <option value="Agent">Agent</option>
-          </select>
-          <button onClick={handelRole}  className="bg-[#FF6F61] p-1 rounded-xl" >OK</button>
+          </select> */}
+          {/* <button onClick={handelRole}  className="bg-[#FF6F61] p-1 rounded-xl" >OK</button> */}
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <select onChange={(e) => setStatus(e.target.value)}
           className="bg-base-200 p-1 rounded-xl"
           >
-            {/* <option>Select</option> */}
+           
             <option >{user.status}</option>
             <option value="Approve">Approve</option>
             <option value="Block">Block</option>

@@ -19,11 +19,7 @@ const UserMenu = () => {
         label='My Winning Contest Page'
         address='myWinningContest'
       />
-        <MenuItem
-            label='Profile'
-            address='profile'
-            icon={FcSettings}
-          />
+       
 
     </>
   )
