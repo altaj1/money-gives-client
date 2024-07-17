@@ -14,12 +14,13 @@ import useAuth from '../hooks/useAuth'
 import MenuItem from './MenuItem'
 import UserMenu from './UserMenu'
 import AdminMenu from './AdminMenu'
+import AgentMenu from './AgentMenu'
 const Sidebar = () => {
   const { logOut } = useAuth()
   const [isActive, setActive] = useState(false)
   const [toggle, setToggle] = useState(true)
   const [role, isLoading] = useRole()
-     console.log(role)
+     console.log(role, "sidebar role")
 //   console.log(role, isLoading)
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -92,6 +93,7 @@ const Sidebar = () => {
               
             
               
+              {role === 'Agent' && <AgentMenu></AgentMenu>}
               {role === 'Admin' && <AdminMenu />}
             </nav>
           </div>

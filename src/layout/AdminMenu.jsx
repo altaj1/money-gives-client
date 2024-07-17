@@ -8,7 +8,7 @@ const AdminMenu = () => {
   return (
     <>
       <MenuItem icon={FaUserCog} label='Manage Users' address='manage-users' />
-      <MenuItem icon={BsFillMotherboardFill} label='Manage Contests' address='ManageContest' />
+      <MenuItem icon={BsFillMotherboardFill} label='Manage Agent' address='ManageAgent' />
     </>
   )
 }

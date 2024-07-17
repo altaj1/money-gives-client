@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
 import useAuth from '../../hooks/useAuth';
-import useAxiosCommon, { axiosCommon } from '../../hooks/useAxiosCommon';
+
 import Swal from 'sweetalert2';
+import useAxiosCommon from '../../hooks/useAxiosCommon';
 
 const RegistrationForm = () => {
   const [name, setName] = useState('');
@@ -13,9 +14,9 @@ const RegistrationForm = () => {
   const axiosCommon = useAxiosCommon()
   
   const firebasePin = pin + 9
-  console.log(user)
+ 
   const registerUser = async user => {
-   
+    console.log(user)
     const { data } = await axiosCommon.put(
       `/register`,
       user
@@ -23,6 +24,7 @@ const RegistrationForm = () => {
     console.log(data)
     return data
   }
+  console.log(name)
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic (e.g., send data to backend)
@@ -33,11 +35,12 @@ const RegistrationForm = () => {
       return;
     }
     const currentUser = {
-      email: user?.email,
+      email: email,
       role: 'User',
       status: 'pending',
       mobile:mobile,
-      pin:pin
+      pin:pin,
+      name:name,
 
     }
     createUser(email, firebasePin)
@@ -52,7 +55,7 @@ const RegistrationForm = () => {
       });
     })
     
-   
+    
   };
 
   return (

@@ -2,7 +2,7 @@
 
 import { BsFingerprint } from "react-icons/bs"
 import { FcSettings } from "react-icons/fc";
-import { SiMyspace } from "react-icons/si";
+import { MdAppRegistration } from "react-icons/md";
 import MenuItem from "./MenuItem";
 
 const UserMenu = () => {
@@ -10,9 +10,9 @@ const UserMenu = () => {
   return (
     <>
       <MenuItem
-        icon={SiMyspace}
-        label='My Participated Contest'
-        address='MyParticipatedContest'
+        icon={MdAppRegistration}
+        label='Agent Registration'
+        address='agent-registration'
       />
       <MenuItem
         icon={BsFingerprint}
