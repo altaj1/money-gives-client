@@ -30,7 +30,7 @@ const AgentDataRow = ({user, refetch}) => {
       if (status == "Approve") {
           mutateAsync({
               status:status,
-              balance: 40
+              balance: 10000,
           })
       }
       else{
